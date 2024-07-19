@@ -5,6 +5,7 @@ from src.ml_project.components.data_ingestion import DataIngention
 from src.ml_project.components.data_ingestion import DataIngentionConfig
 from src.ml_project.components.data_transformation import dataTransformationConfig
 from src.ml_project.components.data_transformation import dataTrans
+from src.ml_project.components.model_trainer import trainner, trainerConfig
 import os
 
 if __name__=="__main__":
@@ -22,7 +23,9 @@ if __name__=="__main__":
         t=os.path.join("artifacts","train.csv")
         te=os.path.join("artifacts","test.csv")
         dt=dataTrans()
-        dt.iniate(t,te)
+        train_array,test_array,pre_processor=dt.iniate(t,te)
+
+        print(trainner().initiate_MT(t_array=train_array,te_array=test_array))
 
     except Exception as e:
         raise CustomException(e,sys)
