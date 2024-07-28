@@ -88,6 +88,16 @@ class trainner:
             best_model_name=best_model_info['model name']
             best_test_score=best_model_info['test_score']
             logging.info(f"{best_model_name} is best model with acurarcy {best_test_score}")
+
+            model_names=list(param_grid.keys())
+            actual_model=""
+            for model in model_names:
+                if best_model_name==model:
+                    actual_model=actual_model+model
+            params=param_grid[actual_model]  
+
+             #mlflow
+                
             save_object(
                 f=best_model_ji,
                 f_path=self.Pf
