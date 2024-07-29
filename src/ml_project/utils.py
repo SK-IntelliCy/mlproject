@@ -103,3 +103,11 @@ def test_ml_algorithms(algorithms, hyperparameter_grids, X_train, y_train, X_tes
             }   
 
     return best_model_info  # Return results dictionary and a tuple with best model information
+
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as file_obj:
+            return pickle.load(file_obj)
+
+    except Exception as e:
+        raise CustomException(e, sys)
